@@ -37,7 +37,8 @@ This site is configured to be automatically deployed through GitHub Pages from t
 2. Navigate to the "Pages" section
 3. Select the `main` branch as the source
 4. Click "Save"
-5. Your site will be published at `https://{username}.github.io/{repository-name}/`
+
+The site is published at [https://github.com/devinambron/devinambron-personal-site](https://github.com/devinambron/devinambron-personal-site)
 
 ## Customizing
 
