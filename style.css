@@ -1,0 +1,163 @@
+/* Global styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Open Sans', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+}
+
+a {
+    color: #339966;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #267349;
+}
+
+/* Layout */
+#page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#main-content {
+    flex: 1;
+}
+
+.content-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+/* Profile section */
+.profile-section {
+    flex: 1;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-image {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    margin-bottom: 1.5rem;
+    background-color: #ff3333;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-image {
+    max-width: 128px;
+    max-height: 136px;
+    z-index: 2;
+}
+
+/* Social media */
+.social-media-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.social-media-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: #666;
+    border: 1px solid #ddd;
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+.social-media-links a:hover {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* Bio section */
+.bio-section {
+    flex: 2;
+    max-width: 600px;
+}
+
+h1 {
+    font-size: 3rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.bio-section p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+/* Footer */
+footer {
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+    text-align: center;
+    background-color: #f5f5f5;
+}
+
+footer p {
+    color: #727272;
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: #727272;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .content-section {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .profile-section, .bio-section {
+        max-width: 100%;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+} 
