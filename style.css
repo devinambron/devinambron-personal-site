@@ -171,7 +171,53 @@ header {
     border: 1px solid var(--glass-border);
     height: var(--header-height);
     border-radius: var(--radius);
+    box-shadow: 
+        rgba(255, 255, 255, 0.5) 0px 0px 0px 1px inset,
+        rgba(0, 0, 0, 0.03) 0px 10px 15px -3px,
+        rgba(0, 0, 0, 0.05) 0px 4px 6px -4px;
+}
+
+/* Right side of header (containing nav and theme toggle) */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Theme toggle styles */
+.theme-toggle {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    cursor: pointer;
+    color: var(--text);
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
     box-shadow: var(--glass-shadow);
+}
+
+.theme-toggle:hover {
+    transform: translateY(-2px) scale(1.03);
+    background-color: rgba(0, 0, 0, 0.05);
+    box-shadow: 
+        rgba(255, 255, 255, 0.6) 0px 0px 0px 1px inset,
+        rgba(0, 0, 0, 0.1) 0px 15px 20px -5px;
+}
+
+/* Dark mode theme toggle */
+.dark-mode .theme-toggle {
+    background-color: rgba(40, 40, 50, 0.6);
+    color: var(--dark-text);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 
+        rgba(255, 255, 255, 0.07) 0px 0px 0px 1px inset,
+        rgba(0, 0, 0, 0.3) 0px 10px 15px -3px;
 }
 
 .logo a {
@@ -182,13 +228,14 @@ header {
     letter-spacing: -0.03em;
     position: relative;
     z-index: 1;
-    padding: 8px 12px;
+    padding: 8px 16px;
     border-radius: var(--radius-sm);
     transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
     background-color: var(--glass-bg);
     backdrop-filter: blur(var(--glass-blur));
     -webkit-backdrop-filter: blur(var(--glass-blur));
     border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
 }
 
 .logo a::after {
@@ -198,6 +245,10 @@ header {
 .logo a:hover {
     background-color: rgba(0, 0, 0, 0.05);
     text-decoration: none;
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 
+        rgba(255, 255, 255, 0.6) 0px 0px 0px 1px inset,
+        rgba(0, 0, 0, 0.1) 0px 15px 20px -5px;
 }
 
 .main-nav {
@@ -942,11 +993,6 @@ footer p {
     font-weight: 500;
 }
 
-.bento-box a.btn {
-    margin-top: 16px;
-    text-decoration: none;
-}
-
 /* Add button styles */
 .btn {
     display: inline-flex;
@@ -969,591 +1015,169 @@ footer p {
     letter-spacing: -0.011em;
 }
 
+.btn:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 
+        rgba(255, 255, 255, 0.6) 0px 0px 0px 1px inset,
+        rgba(0, 0, 0, 0.1) 0px 15px 20px -5px;
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
 .btn-primary {
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: #000000;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.15);
     box-shadow: 
         rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset,
         rgba(0, 0, 0, 0.2) 0px 10px 15px -3px;
 }
 
 .btn-primary:hover {
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: #000000;
+    color: #ffffff;
     box-shadow: 
-        rgba(255, 255, 255, 0.15) 0px 0px 0px 1px inset,
+        rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset,
         rgba(0, 0, 0, 0.25) 0px 15px 20px -5px;
 }
 
 .btn-outline {
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0.3);
     border: 1px solid var(--border);
+    color: var(--text);
 }
 
 .btn-outline:hover {
-    background-color: var(--glass-bg);
+    background-color: rgba(255, 255, 255, 0.5);
     transform: translateY(-2px);
 }
 
-.btn:hover {
-    transform: translateY(-2px) scale(1.03);
-    box-shadow: 
-        rgba(255, 255, 255, 0.6) 0px 0px 0px 1px inset,
-        rgba(0, 0, 0, 0.1) 0px 15px 20px -5px;
-}
-
-.btn::after {
-    display: none;
-}
-
-/* Media queries */
-@media (max-width: 768px) {
-    header {
-        padding: 16px;
-    }
-    
-    .container {
-        padding: 0 16px;
-    }
-    
-    .profile-content {
-        flex-direction: column;
-        gap: 32px;
-        align-items: center;
-        text-align: center;
-    }
-    
-    .profile-section, .blog-section, .blog-post {
-        padding-top: calc(var(--header-height) + 40px);
-    }
-    
-    h1, .blog-post-title {
-        font-size: 32px;
-    }
-    
-    .about-content {
-        max-width: 100%;
-    }
-    
-    .blog-post-content h2 {
-        font-size: 24px;
-    }
-    
-    .blog-post-content p, .blog-post-content .lead {
-        font-size: 16px;
-    }
-    
-    .blog-post-footer {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .profile-image {
-        width: 100px;
-        height: 100px;
-    }
-    
-    .logo-image {
-        max-width: 60px;
-        max-height: 60px;
-    }
-    
-    .bento-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    /* Profile section on mobile */
-    .profile-social {
-        justify-content: center;
-        margin: 16px auto 24px;
-    }
-    
-    .profile-section {
-        text-align: center;
-    }
-    
-    .tagline {
-        margin-top: 8px;
-    }
-}
-
-@media (max-width: 480px) {
-    :root {
-        --radius: 0.5rem;
-        --radius-sm: 0.375rem;
-    }
-    
-    header {
-        padding: 12px 16px;
-    }
-    
-    .container {
-        padding: 0 16px;
-    }
-    
-    h1, .blog-post-title {
-        font-size: 28px;
-    }
-    
-    .tagline {
-        font-size: 16px;
-    }
-    
-    .social-media-links {
-        gap: 10px;
-        margin: 12px auto 20px;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-    
-    .social-media-links a {
-        width: 40px;
-        height: 40px;
-        font-size: 16px;
-    }
-    
-    h1 {
-        margin-bottom: 12px;
-    }
-    
-    .main-nav {
-        gap: 16px;
-    }
-    
-    .about-content p {
-        font-size: 16px;
-    }
-    
-    .blog-title {
-        font-size: 20px;
-    }
-    
-    .profile-section, .blog-section, .blog-post {
-        padding-top: calc(var(--header-height) + 24px);
-    }
-    
-    .profile-image {
-        width: 80px;
-        height: 80px;
-    }
-    
-    .logo-image {
-        max-width: 50px;
-        max-height: 50px;
-    }
-    
-    .nav-link {
-        font-size: 14px;
-        padding: 6px 12px;
-    }
-    
-    .cta {
-        font-size: 16px;
-    }
-    
-    .blog-card-link {
-        padding: 16px;
-    }
-    
-    footer {
-        padding: 32px 0;
-    }
-    
-    .bento-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .bento-box-large {
-        grid-column: span 1;
-    }
-}
-
-/* Add dark mode toggle switch */
-.theme-toggle {
-    position: relative;
-    width: 38px;
-    height: 38px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    margin-right: 10px;
-    background-color: var(--glass-bg);
-    backdrop-filter: blur(var(--glass-blur));
-    -webkit-backdrop-filter: blur(var(--glass-blur));
-    border-radius: var(--radius-full);
-    border: 1px solid var(--glass-border);
-    box-shadow: var(--glass-shadow);
-    color: var(--text);
-    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-    font-size: 16px;
-}
-
-.theme-toggle:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow);
-}
-
-/* Dark Mode Styles */
-.dark-mode {
-    --bg: #080A0F;
-    --bg-alt: #14171F;
-    --text: rgba(255, 255, 255, 0.9);
-    --text-light: rgba(255, 255, 255, 0.7);
-    --border: rgba(255, 255, 255, 0.1);
-    --primary: #ffffff;
-    --primary-light: #e0e0e0;
-    
-    /* Glass variables */
-    --glass-bg: rgba(20, 23, 30, 0.6);
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --glass-shadow: 
-        rgba(255, 255, 255, 0.07) 0px 0px 0px 1px inset,
-        rgba(0, 0, 0, 0.25) 0px 10px 15px -3px;
-
-    background-color: var(--bg);
-    background-image: 
-        radial-gradient(circle at 25px 25px, rgba(255, 255, 255, 0.01) 2%, transparent 0%),
-        radial-gradient(circle at 75px 75px, rgba(255, 255, 255, 0.01) 2%, transparent 0%),
-        linear-gradient(135deg, rgba(30, 30, 50, 0.2) 0%, rgba(20, 23, 30, 0.2) 100%);
-    color: var(--text);
-}
-
-.dark-mode .bento-box {
-    background-color: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-}
-
-.dark-mode .bento-box::before {
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.05), transparent);
-}
-
-.dark-mode .bento-box-dark {
-    background-color: rgba(15, 15, 20, 0.6);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    box-shadow: 
-        rgba(255, 255, 255, 0.07) 0px 0px 0px 1px inset,
-        rgba(0, 0, 0, 0.3) 0px 20px 30px -10px,
-        rgba(0, 0, 0, 0.3) 0px 10px 15px -3px;
-}
-
-.dark-mode .highlight::after {
-    background-color: rgba(255, 255, 255, 0.15);
-}
-
-.dark-mode .blog-card, 
-.dark-mode .main-nav, 
-.dark-mode .logo a, 
-.dark-mode .btn,
-.dark-mode .social-media-links a,
-.dark-mode .tag,
-.dark-mode .share-link,
-.dark-mode .theme-toggle,
-.dark-mode .back-link {
-    background-color: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-}
-
-.dark-mode .blog-card::before {
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.05), transparent);
-}
-
-/* Shimmering effects for dark mode */
-.dark-mode .profile-section::before {
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 70%);
-}
-
-.dark-mode .profile-section::after {
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0) 70%);
-}
-
-.dark-mode .profile-image::before {
-    background: linear-gradient(
-        to bottom right,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.05) 50%,
-        rgba(255, 255, 255, 0) 100%
-    );
-}
-
-.dark-mode .btn-primary {
-    background-color: rgba(255, 255, 255, 0.15);
-    box-shadow: 
-        rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset,
-        rgba(0, 0, 0, 0.3) 0px 10px 15px -3px;
-}
-
-.dark-mode .btn-primary:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-.dark-mode .nav-link-active, 
-.dark-mode .nav-link-active:hover {
-    background-color: rgba(255, 255, 255, 0.9);
-    color: #000000;
-}
-
-.dark-mode footer {
-    border-top: 1px solid var(--border);
-}
-
-/* More prominent glassmorphic effect for all cards in dark mode */
-.dark-mode .bento-box,
-.dark-mode .blog-card,
-.dark-mode .main-nav,
-.dark-mode .btn,
-.dark-mode .tag,
-.dark-mode .back-link,
-.dark-mode .social-media-links a,
-.dark-mode .theme-toggle,
-.dark-mode .share-link {
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-}
-
-/* Enhanced floating header for dark mode */
-.dark-mode header {
-    background-color: rgba(20, 20, 25, 0.7);
+/* Dark mode button styles */
+.dark-mode .btn {
+    background-color: rgba(40, 40, 50, 0.6);
+    color: var(--dark-text);
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 
         rgba(255, 255, 255, 0.07) 0px 0px 0px 1px inset,
-        rgba(0, 0, 0, 0.3) 0px 10px 20px -5px,
-        rgba(80, 80, 255, 0.05) 0px 0px 20px -5px;
+        rgba(0, 0, 0, 0.3) 0px 10px 15px -3px;
 }
 
-/* Enhanced Notion-like typography */
-h2 {
-    font-size: 1.75rem;
-    font-weight: 600;
-    margin-bottom: 16px;
-    line-height: 1.3;
-    letter-spacing: -0.025em;
-}
-
-h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 12px;
-    line-height: 1.4;
-    letter-spacing: -0.02em;
-}
-
-p {
-    font-size: 1.0625rem;
-    line-height: 1.7;
-    letter-spacing: -0.011em;
-}
-
-/* Add subtle glow effects to elements in dark mode */
-.dark-mode .nav-link-active, 
-.dark-mode .theme-toggle,
-.dark-mode .social-media-links a {
-    box-shadow: 
-        rgba(255, 255, 255, 0.07) 0px 0px 0px 1px inset, 
-        rgba(120, 120, 255, 0.1) 0px 0px 10px, 
-        rgba(0, 0, 0, 0.2) 0px 10px 15px -3px;
-}
-
-/* VisionOS hover animations */
-.logo a, .nav-link, .social-media-links a, .theme-toggle {
-    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.logo a:hover, .social-media-links a:hover, .theme-toggle:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 
-        rgba(255, 255, 255, 0.6) 0px 0px 0px 1px inset,
-        rgba(0, 0, 0, 0.1) 0px 15px 20px -5px;
-}
-
-.nav-link:hover:not(.nav-link-active) {
-    transform: translateY(-2px);
-    background-color: rgba(0, 0, 0, 0.03);
-}
-
-.logo a {
-    font-weight: 700;
-    font-size: 20px;
-    color: var(--primary);
-    text-decoration: none;
-    letter-spacing: -0.03em;
-    position: relative;
-    z-index: 1;
-    padding: 8px 16px;
-    border-radius: var(--radius-sm);
-    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-    background-color: var(--glass-bg);
-    backdrop-filter: blur(var(--glass-blur));
-    -webkit-backdrop-filter: blur(var(--glass-blur));
-    border: 1px solid var(--glass-border);
-}
-
-.main-nav {
-    display: flex;
-    gap: 8px;
-    background-color: var(--glass-bg);
-    backdrop-filter: blur(var(--glass-blur));
-    -webkit-backdrop-filter: blur(var(--glass-blur));
-    padding: 6px;
-    border-radius: var(--radius-full);
-    border: 1px solid var(--glass-border);
-    box-shadow: var(--glass-shadow);
-}
-
-.nav-link {
-    color: var(--text);
-    font-weight: 500;
-    font-size: 15px;
-    padding: 8px 16px;
-    border-radius: var(--radius-full);
-    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.nav-link-active, 
-.nav-link-active:hover {
-    color: #ffffff;
-    background-color: var(--primary);
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 8px;
-    text-decoration: none;
-}
-
-/* Add gentle shadow to create depth for profile image */
-.profile-image {
-    width: 120px;
-    height: 120px;
-    background-color: var(--glass-bg);
-    backdrop-filter: blur(var(--glass-blur));
-    -webkit-backdrop-filter: blur(var(--glass-blur));
-    border-radius: var(--radius-full);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: var(--transition);
-    position: relative;
-    overflow: hidden;
-    border: 1px solid var(--glass-border);
-    box-shadow: 
-        rgba(255, 255, 255, 0.4) 0px 0px 0px 1px inset,
-        rgba(0, 0, 0, 0.1) 0px 10px 15px -3px;
-}
-
-/* Theme toggle enhancements */
-.theme-toggle {
-    position: relative;
-    width: 38px;
-    height: 38px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    margin-right: 10px;
-    background-color: var(--glass-bg);
-    backdrop-filter: blur(var(--glass-blur));
-    -webkit-backdrop-filter: blur(var(--glass-blur));
-    border-radius: var(--radius-full);
-    border: 1px solid var(--glass-border);
-    box-shadow: var(--glass-shadow);
-    color: var(--text);
-    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-    font-size: 16px;
-}
-
-/* Social media icon enhancements */
-.social-media-links a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 38px;
-    height: 38px;
-    color: var(--text-light);
-    font-size: 16px;
-    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-    border-radius: var(--radius-full);
-    background-color: var(--glass-bg);
-    backdrop-filter: blur(var(--glass-blur));
-    -webkit-backdrop-filter: blur(var(--glass-blur));
-    border: 1px solid var(--glass-border);
-    box-shadow: var(--glass-shadow);
-}
-
-/* Additional VisionOS-inspired effects */
-
-/* Subtle depth shadows for sections */
-section {
-    position: relative;
-}
-
-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 200px;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.05), transparent);
-    pointer-events: none;
-    z-index: -1;
-}
-
-/* Light glow effects for dark mode */
-.dark-mode .bento-box:hover, 
-.dark-mode .blog-card:hover,
-.dark-mode .theme-toggle:hover,
-.dark-mode .social-media-links a:hover,
 .dark-mode .btn:hover {
+    background-color: rgba(50, 50, 60, 0.7);
     box-shadow: 
         rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset,
-        rgba(0, 0, 0, 0.3) 0px 20px 25px -5px,
-        rgba(120, 120, 255, 0.15) 0px 0px 30px -5px;
+        rgba(0, 0, 0, 0.3) 0px 15px 20px -5px,
+        rgba(100, 100, 255, 0.1) 0px 0px 20px -5px;
 }
 
-/* Enhanced background effects for visionOS look */
-html {
-    height: 100%;
-    background: linear-gradient(135deg, rgba(245, 245, 255, 0.05), rgba(245, 255, 255, 0.05));
-}
-
-.dark-mode html {
-    background: linear-gradient(135deg, rgba(25, 25, 35, 0.5), rgba(15, 20, 30, 0.5));
-}
-
-/* Subtle glow for active/hover elements */
-.nav-link-active, 
-.nav-link-active:hover {
+/* Enhanced Dark Mode Button Styles */
+.dark-mode .btn-primary {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 
-        rgba(0, 0, 0, 0.2) 0px 5px 15px -3px,
-        rgba(0, 0, 0, 0.1) 0px 3px 6px -4px;
+        rgba(255, 255, 255, 0.15) 0px 0px 0px 1px inset,
+        rgba(0, 0, 0, 0.3) 0px 10px 15px -3px,
+        rgba(255, 255, 255, 0.05) 0px 0px 20px;
+    text-shadow: none;
+    font-weight: 600;
 }
 
-/* Enhance background shapes for more visual interest */
-body::before {
-    content: '';
-    position: fixed;
-    top: -50%;
-    right: -50%;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(176, 176, 250, 0.03) 0%, transparent 60%);
-    z-index: -1;
-    pointer-events: none;
+.dark-mode .btn-primary:hover {
+    background-color: #ffffff;
+    color: #000000;
+    box-shadow: 
+        rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset,
+        rgba(0, 0, 0, 0.3) 0px 15px 20px -5px,
+        rgba(255, 255, 255, 0.1) 0px 0px 30px;
 }
 
-body::after {
-    content: '';
-    position: fixed;
-    bottom: -50%;
-    left: -50%;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(176, 250, 250, 0.03) 0%, transparent 60%);
-    z-index: -1;
-    pointer-events: none;
+.dark-mode .btn-outline {
+    color: var(--dark-text);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 
+        rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset,
+        rgba(0, 0, 0, 0.3) 0px 15px 20px -5px,
+        rgba(120, 120, 255, 0.1) 0px 0px 20px -5px;
 }
 
-.dark-mode body::before {
-    background: radial-gradient(circle, rgba(30, 30, 100, 0.05) 0%, transparent 60%);
+.bento-box-dark .btn-outline {
+    color: var(--dark-text);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(40, 40, 50, 0.8);
 }
 
-.dark-mode body::after {
-    background: radial-gradient(circle, rgba(30, 100, 100, 0.05) 0%, transparent 60%);
+.bento-box-dark .btn-outline:hover {
+    background-color: rgba(50, 50, 60, 0.8);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 
+        rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset,
+        rgba(0, 0, 0, 0.3) 0px 15px 20px -5px,
+        rgba(120, 120, 255, 0.1) 0px 0px 20px -5px;
+}
+
+/* Dark mode specific bento box button styles */
+.dark-mode .bento-box .btn {
+    background-color: rgba(40, 40, 50, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--dark-text);
+}
+
+.dark-mode .bento-box .btn:hover {
+    background-color: rgba(50, 50, 60, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 
+        rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset,
+        rgba(0, 0, 0, 0.3) 0px 15px 20px -5px,
+        rgba(120, 120, 255, 0.1) 0px 0px 20px -5px;
+}
+
+.dark-mode .bento-box-dark .btn {
+    background-color: rgba(20, 20, 30, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--dark-text);
+}
+
+.dark-mode .bento-box-dark .btn:hover {
+    background-color: rgba(30, 30, 40, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 
+        rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset,
+        rgba(0, 0, 0, 0.3) 0px 15px 20px -5px,
+        rgba(120, 120, 255, 0.1) 0px 0px 20px -5px;
+}
+
+/* Specific styling for the Read My Blog button */
+.btn-primary .fa-arrow-right {
+    margin-left: 6px;
+    transition: transform 0.3s ease;
+}
+
+.btn-primary:hover .fa-arrow-right {
+    transform: translateX(4px);
+}
+
+.bento-box .btn-primary {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.bento-box .btn-primary:hover {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.dark-mode .bento-box .btn-primary,
+.dark-mode .bento-box-dark .btn-primary {
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: 600;
+}
+
+.dark-mode .bento-box .btn-primary:hover,
+.dark-mode .bento-box-dark .btn-primary:hover {
+    background-color: #ffffff;
+    color: #000000;
 } 
