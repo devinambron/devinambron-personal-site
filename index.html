@@ -3,35 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Devin Ambron</title>
+    <title>Devin Ambron | Personal Website</title>
+    <meta name="description" content="Personal website for Devin Ambron, entrepreneur, marketer, and community builder based in Austin, TX.">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="page-container">
-        <div id="main-content">
-            <div class="content-section">
-                <div class="profile-section">
-                    <div class="profile-image">
-                        <img src="images/D.png" alt="D logo" class="logo-image">
-                    </div>
-                    <ul class="social-media-links">
-                        <li><a href="https://www.linkedin.com/in/dambron?fromQR=1" target="_blank" rel="noopener" title="Follow on LinkedIn"><i class="fab fa-linkedin"></i></a></li>
-                        <li><a href="https://instagram.com/dambron" target="_blank" rel="noopener" title="Follow on Instagram"><i class="fab fa-instagram"></i></a></li>
-                        <li><a href="https://www.youtube.com/channel/UChEZx4YckVd6osV0lJgaGnQ" target="_blank" rel="noopener" title="Follow on Youtube"><i class="fab fa-youtube"></i></a></li>
-                        <li><a href="https://twitter.com/dambron" target="_blank" rel="noopener" title="Follow on X"><i class="fab fa-x-twitter"></i></a></li>
-                    </ul>
+    <div class="cursor"></div>
+    <header>
+        <div class="logo">D</div>
+        <nav class="social-nav">
+            <ul class="social-media-links">
+                <li><a href="https://www.linkedin.com/in/dambron?fromQR=1" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+                <li><a href="https://instagram.com/dambron" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="https://www.youtube.com/channel/UChEZx4YckVd6osV0lJgaGnQ" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a></li>
+                <li><a href="https://twitter.com/dambron" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="profile-image">
+                    <img src="images/D.png" alt="D logo" class="logo-image">
                 </div>
-                <div class="bio-section">
-                    <h1>Hi, I'm Devin!</h1>
+                <h1 class="animate-text">Hi, I'm <span class="highlight">Devin</span></h1>
+                <p class="tagline">Entrepreneur • Marketer • Community Builder</p>
+            </div>
+        </section>
+
+        <section class="about">
+            <div class="container">
+                <div class="section-content">
+                    <h2>About Me</h2>
                     <p>I live in Austin, TX and have founded <a href="https://ambronenterprises.com" target="_blank" rel="noopener">various companies</a> with an extensive background in <a href="https://builtwelldigital.com" target="_blank" rel="noopener">marketing</a>, tech, systems, speaking, movement and community building and run various <a href="https://austinconnectionshh.com" target="_blank" rel="noopener">networking</a> and summit events.</p>
-                    <h2>Feel free to connect with me online.</h2>
+                    <p class="cta">Feel free to connect with me online.</p>
                 </div>
             </div>
-        </div>
-        <footer>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <script>document.write(new Date().getFullYear())</script> Devin Ambron. All rights reserved.</p>
             <p>Site by <a href="https://builtwelldigital.com/siteby" target="_blank" rel="noopener">Builtwell</a></p>
-        </footer>
-    </div>
+        </div>
+    </footer>
+
+    <script>
+        // Cursor animation
+        document.addEventListener('mousemove', function(e) {
+            const cursor = document.querySelector('.cursor');
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+        
+        // Text animation for the main heading
+        const text = document.querySelector('.animate-text');
+        text.innerHTML = text.textContent.replace(/\S/g, "<span>$&</span>");
+        
+        const spans = document.querySelectorAll('.animate-text span');
+        spans.forEach((span, idx) => {
+            span.style.animationDelay = `${idx * 0.05}s`;
+        });
+    </script>
 </body>
 </html> 
