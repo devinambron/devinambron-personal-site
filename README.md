@@ -29,16 +29,16 @@ To run the site locally:
 
 ## Deployment
 
-This site is configured to be automatically deployed through GitHub Pages from the `main` branch.
+This site is configured to be automatically deployed through GitHub Pages.
 
 ### Setting up GitHub Pages
 
 1. Go to the repository settings
 2. Navigate to the "Pages" section
-3. Select the `main` branch as the source
-4. Click "Save"
+3. Under "Build and deployment", select "GitHub Actions" as the source
+4. The site will be automatically deployed when changes are pushed to the main branch
 
-The site is published at [https://github.com/devinambron/devinambron-personal-site](https://github.com/devinambron/devinambron-personal-site)
+The repository is available at [https://github.com/devinambron/devinambron-personal-site](https://github.com/devinambron/devinambron-personal-site)
 
 ## Customizing
 
