@@ -9,10 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="cursor"></div>
     <header>
         <div class="logo">D</div>
         <nav class="social-nav">
@@ -55,13 +54,6 @@
     </footer>
 
     <script>
-        // Cursor animation
-        document.addEventListener('mousemove', function(e) {
-            const cursor = document.querySelector('.cursor');
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
-        
         // Text animation for the main heading
         const text = document.querySelector('.animate-text');
         text.innerHTML = text.textContent.replace(/\S/g, "<span>$&</span>");
