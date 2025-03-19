@@ -1180,4 +1180,132 @@ footer p {
 .dark-mode .bento-box-dark .btn-primary:hover {
     background-color: #ffffff;
     color: #000000;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .bento-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 10px 16px;
+    }
+    
+    .profile-content {
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .profile-left {
+        margin-bottom: 10px;
+    }
+    
+    .social-media-links {
+        justify-content: center;
+    }
+    
+    .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .bento-box-large {
+        grid-column: span 2;
+    }
+    
+    h1 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 640px) {
+    header {
+        width: calc(100% - 32px);
+        top: 10px;
+    }
+    
+    .logo a {
+        font-size: 18px;
+        padding: 6px 12px;
+    }
+    
+    .nav-link {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+    
+    .theme-toggle {
+        width: 36px;
+        height: 36px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .tagline {
+        font-size: 1rem;
+    }
+    
+    .bento-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .bento-box-large {
+        grid-column: span 1;
+    }
+    
+    .blog-posts {
+        grid-template-columns: 1fr;
+    }
+    
+    .blog-post-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .blog-post-content {
+        padding: 0 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-right {
+        gap: 8px;
+    }
+    
+    .main-nav {
+        padding: 4px;
+    }
+    
+    .nav-link {
+        padding: 5px 10px;
+    }
+    
+    .profile-section {
+        padding-top: calc(var(--header-height) + 40px);
+    }
+    
+    .blog-section {
+        padding-top: calc(var(--header-height) + 40px);
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .profile-image {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .logo-image {
+        max-width: 60px;
+        max-height: 60px;
+    }
 } 
