@@ -15,6 +15,19 @@
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     --transition: all 0.2s ease;
     --header-height: 60px;
+    
+    /* Glassmorphism Variables */
+    --glass-bg: rgba(255, 255, 255, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --glass-shadow: rgba(0, 0, 0, 0.05) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -4px;
+    --glass-blur: 12px;
+    
+    /* Dark Glassmorphism Variables */
+    --dark-glass-bg: rgba(23, 23, 23, 0.75);
+    --dark-glass-border: rgba(255, 255, 255, 0.1);
+    --dark-glass-shadow: rgba(0, 0, 0, 0.25) 0px 10px 15px -3px;
+    --dark-text: rgba(255, 255, 255, 0.9);
+    --dark-text-light: rgba(255, 255, 255, 0.7);
 }
 
 * {
@@ -32,6 +45,10 @@ body {
     line-height: 1.7;
     color: var(--text);
     background-color: var(--bg);
+    background-image: 
+        radial-gradient(circle at 25px 25px, rgba(0, 0, 0, 0.02) 2%, transparent 0%),
+        radial-gradient(circle at 75px 75px, rgba(0, 0, 0, 0.02) 2%, transparent 0%);
+    background-size: 100px 100px;
     overflow-x: hidden;
     font-size: 16px;
     font-weight: 400;
@@ -136,10 +153,12 @@ header {
     left: 0;
     width: 100%;
     z-index: 100;
-    background-color: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(5px);
-    border-bottom: 1px solid var(--border);
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border-bottom: 1px solid var(--glass-border);
     height: var(--header-height);
+    box-shadow: var(--glass-shadow);
 }
 
 .logo a {
@@ -153,7 +172,10 @@ header {
     padding: 8px 12px;
     border-radius: var(--radius-sm);
     transition: var(--transition);
-    background-color: var(--bg-alt);
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
 }
 
 .logo a::after {
@@ -168,10 +190,13 @@ header {
 .main-nav {
     display: flex;
     gap: 8px;
-    background-color: var(--bg-alt);
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
     padding: 4px;
     border-radius: var(--radius-full);
-    border: 1px solid var(--border);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
 }
 
 .nav-link {
@@ -223,7 +248,11 @@ header {
     font-size: 16px;
     transition: var(--transition);
     border-radius: var(--radius-full);
-    background-color: var(--bg-alt);
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
 }
 
 .social-media-links a::after {
@@ -232,8 +261,8 @@ header {
 
 .social-media-links a:hover {
     color: var(--primary);
-    transform: translateY(-2px);
-    background-color: rgba(0, 0, 0, 0.05);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
 }
 
 /* Profile section */
@@ -241,6 +270,34 @@ header {
     padding: 120px 0 80px;
     padding-top: calc(var(--header-height) + 60px);
     background-color: var(--bg);
+    position: relative;
+}
+
+/* Add a subtle color blob for background interest */
+.profile-section::before {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.03) 0%, rgba(0, 0, 0, 0) 70%);
+    top: 20%;
+    right: -100px;
+    border-radius: 50%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.profile-section::after {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.02) 0%, rgba(0, 0, 0, 0) 70%);
+    bottom: 10%;
+    left: -150px;
+    border-radius: 50%;
+    z-index: -1;
+    pointer-events: none;
 }
 
 .profile-content {
@@ -260,7 +317,9 @@ header {
 .profile-image {
     width: 120px;
     height: 120px;
-    background-color: var(--bg-alt);
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
     border-radius: var(--radius-full);
     display: flex;
     justify-content: center;
@@ -268,8 +327,37 @@ header {
     transition: var(--transition);
     position: relative;
     overflow: hidden;
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow-light);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+}
+
+/* Add a shimmering effect to the profile image */
+.profile-image::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(30deg);
+    animation: shimmer 6s infinite linear;
+    z-index: 1;
+    pointer-events: none;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%) rotate(30deg);
+    }
+    100% {
+        transform: translateX(100%) rotate(30deg);
+    }
 }
 
 .logo-image {
@@ -365,15 +453,37 @@ h1 {
 }
 
 .blog-card {
-    background-color: var(--bg);
-    border: 1px solid var(--border);
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
     border-radius: var(--radius);
     padding: 24px;
     transition: var(--transition);
-    box-shadow: var(--shadow-light);
+    box-shadow: var(--glass-shadow);
     height: 100%;
     display: flex;
     flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.blog-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), transparent);
+    opacity: 0.3;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.blog-card > * {
+    position: relative;
+    z-index: 1;
 }
 
 .blog-card:hover {
@@ -419,9 +529,12 @@ h1 {
 }
 
 .blog-category {
-    background-color: var(--bg-alt);
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
     padding: 4px 12px;
     border-radius: var(--radius-sm);
+    border: 1px solid var(--glass-border);
 }
 
 .blog-excerpt {
@@ -472,12 +585,17 @@ h1 {
     margin-bottom: 24px;
     padding: 8px 16px;
     border-radius: var(--radius-sm);
-    background-color: var(--bg-alt);
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
     transition: var(--transition);
+    box-shadow: var(--glass-shadow);
 }
 
 .back-link:hover {
     background-color: rgba(0, 0, 0, 0.05);
+    transform: translateY(-2px);
 }
 
 .back-link::after {
@@ -566,16 +684,20 @@ h1 {
 .tag {
     display: inline-block;
     padding: 6px 16px;
-    background-color: var(--bg-alt);
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
     color: var(--text-light);
     font-size: 14px;
     border-radius: var(--radius-sm);
     transition: var(--transition);
+    border: 1px solid var(--glass-border);
 }
 
 .tag:hover {
     background-color: rgba(0, 0, 0, 0.05);
     color: var(--primary);
+    transform: translateY(-2px);
 }
 
 .blog-post-share {
@@ -591,9 +713,13 @@ h1 {
     align-items: center;
     justify-content: center;
     color: var(--text-light);
-    background-color: var(--bg-alt);
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
     border-radius: var(--radius-full);
     transition: var(--transition);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
 }
 
 .share-link::after {
@@ -639,20 +765,127 @@ footer p {
 }
 
 .bento-box {
-    background-color: var(--bg);
-    border: 1px solid var(--border);
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
     border-radius: var(--radius);
     padding: 24px;
     transition: var(--transition);
-    box-shadow: var(--shadow-light);
+    box-shadow: var(--glass-shadow);
     display: flex;
     flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .bento-box:hover {
-    transform: translateY(-4px);
+    transform: translateY(-6px);
     box-shadow: var(--shadow);
     border-color: var(--primary-light);
+}
+
+/* Dark glassmorphic bento box variant */
+.bento-box-dark {
+    background-color: var(--dark-glass-bg);
+    border: 1px solid var(--dark-glass-border);
+    box-shadow: var(--dark-glass-shadow);
+    color: var(--dark-text);
+    /* VisionOS-inspired glow effect */
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.2),
+        0 0 20px rgba(0, 0, 0, 0.5),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.bento-box-dark .bento-box-title {
+    color: var(--dark-text);
+}
+
+.bento-box-dark .bento-box-content {
+    color: var(--dark-text-light);
+}
+
+.bento-box-dark .bento-box-icon {
+    color: white;
+}
+
+/* Glass gradient effect for bento boxes */
+.bento-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), transparent);
+    opacity: 0.3;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.bento-box-dark::before {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.05), transparent);
+}
+
+/* Inner light reflection */
+.bento-box::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+        circle at center,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0) 80%
+    );
+    opacity: 0.4;
+    z-index: 0;
+    pointer-events: none;
+    transform: translateY(-30%);
+    transition: transform 0.5s ease;
+}
+
+.bento-box:hover::after {
+    transform: translateY(0%);
+}
+
+.bento-box-dark::after {
+    background: radial-gradient(
+        circle at center,
+        rgba(255, 255, 255, 0.05) 0%,
+        rgba(255, 255, 255, 0) 80%
+    );
+    opacity: 0.15;
+}
+
+/* Enhanced dark mode glassmorphism */
+.dark-mode .bento-box-dark {
+    background-color: rgba(15, 15, 15, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.5),
+        0 0 15px rgba(0, 0, 0, 0.3),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+        inset 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Add a subtle glow effect to dark boxes on hover */
+.bento-box-dark:hover {
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.5),
+        0 0 15px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(255, 255, 255, 0.03),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.bento-box > * {
+    position: relative;
+    z-index: 1;
 }
 
 .bento-box-large {
@@ -661,6 +894,21 @@ footer p {
 
 .bento-box-tall {
     grid-row: span 2;
+}
+
+/* Additional VisionOS-inspired effects for dark mode */
+.dark-mode .btn-primary, 
+.dark-mode .nav-link-active {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+/* Subtle hover glow effect for buttons in dark mode */
+.dark-mode .btn:hover,
+.dark-mode .theme-toggle:hover,
+.dark-mode .social-media-links a:hover {
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 0 10px rgba(255, 255, 255, 0.1);
 }
 
 .bento-box-icon {
@@ -705,17 +953,23 @@ footer p {
     border-radius: var(--radius-sm);
     cursor: pointer;
     transition: var(--transition);
-    background-color: var(--bg-alt);
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
     color: var(--text);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
 }
 
 .btn-primary {
     background-color: var(--primary);
     color: white;
+    border: none;
 }
 
 .btn-primary:hover {
     background-color: var(--primary-light);
+    transform: translateY(-2px);
 }
 
 .btn-outline {
@@ -724,7 +978,13 @@ footer p {
 }
 
 .btn-outline:hover {
-    background-color: var(--bg-alt);
+    background-color: var(--glass-bg);
+    transform: translateY(-2px);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
 }
 
 .btn::after {
@@ -891,4 +1151,141 @@ footer p {
     .bento-box-large {
         grid-column: span 1;
     }
+}
+
+/* Add dark mode toggle switch */
+.theme-toggle {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-right: 8px;
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border-radius: var(--radius-full);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    color: var(--text);
+    transition: var(--transition);
+}
+
+.theme-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+/* Dark Mode Styles */
+.dark-mode {
+    --bg: #0f1013;
+    --bg-alt: #1c1e24;
+    --text: rgba(255, 255, 255, 0.9);
+    --text-light: rgba(255, 255, 255, 0.7);
+    --border: rgba(255, 255, 255, 0.1);
+    --primary: #ffffff;
+    --primary-light: #e0e0e0;
+    
+    /* Glass variables */
+    --glass-bg: rgba(30, 32, 40, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-shadow: rgba(0, 0, 0, 0.15) 0px 10px 15px -3px, rgba(0, 0, 0, 0.15) 0px 4px 6px -4px;
+
+    background-color: var(--bg);
+    background-image: 
+        radial-gradient(circle at 25px 25px, rgba(255, 255, 255, 0.02) 2%, transparent 0%),
+        radial-gradient(circle at 75px 75px, rgba(255, 255, 255, 0.02) 2%, transparent 0%);
+    color: var(--text);
+}
+
+.dark-mode .bento-box {
+    background-color: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+}
+
+.dark-mode .bento-box::before {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.05), transparent);
+}
+
+.dark-mode .bento-box-dark {
+    background-color: rgba(15, 15, 15, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: var(--glass-shadow);
+}
+
+.dark-mode .highlight::after {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.dark-mode .blog-card, 
+.dark-mode .main-nav, 
+.dark-mode .logo a, 
+.dark-mode .btn,
+.dark-mode .social-media-links a,
+.dark-mode .tag,
+.dark-mode .share-link,
+.dark-mode .theme-toggle,
+.dark-mode .back-link {
+    background-color: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+}
+
+.dark-mode .blog-card::before {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.05), transparent);
+}
+
+/* Shimmering effects for dark mode */
+.dark-mode .profile-section::before {
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 70%);
+}
+
+.dark-mode .profile-section::after {
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0) 70%);
+}
+
+.dark-mode .profile-image::before {
+    background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.05) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+}
+
+.dark-mode .btn-primary {
+    background-color: #3a3a3a;
+}
+
+.dark-mode .btn-primary:hover {
+    background-color: #4a4a4a;
+}
+
+.dark-mode .nav-link-active, 
+.dark-mode .nav-link-active:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #000000;
+}
+
+.dark-mode footer {
+    border-top: 1px solid var(--border);
+}
+
+/* More prominent glassmorphic effect for all cards in dark mode */
+.dark-mode .bento-box,
+.dark-mode .blog-card,
+.dark-mode .main-nav,
+.dark-mode .btn,
+.dark-mode .tag,
+.dark-mode .back-link,
+.dark-mode .social-media-links a,
+.dark-mode .theme-toggle,
+.dark-mode .share-link {
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode header {
+    background-color: rgba(15, 16, 19, 0.75);
+    border-bottom: 1px solid var(--glass-border);
 } 

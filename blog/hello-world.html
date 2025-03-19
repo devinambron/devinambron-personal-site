@@ -16,10 +16,15 @@
         <div class="logo">
             <a href="../index.html">DA</a>
         </div>
-        <nav class="main-nav">
-            <a href="../index.html" class="nav-link">Home</a>
-            <a href="../blog.html" class="nav-link nav-link-active">Blog</a>
-        </nav>
+        <div style="display: flex; align-items: center;">
+            <div class="theme-toggle" title="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </div>
+            <nav class="main-nav">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../blog.html" class="nav-link nav-link-active">Blog</a>
+            </nav>
+        </div>
     </header>
 
     <main>
@@ -127,5 +132,39 @@
             <p>Site by <a href="https://builtwelldigital.com/siteby" target="_blank" rel="noopener">Builtwell</a></p>
         </div>
     </footer>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.querySelector('.theme-toggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        // Check for saved theme preference or use default
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        
+        // Apply the saved theme on load
+        if (currentTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+        
+        // Toggle theme when the button is clicked
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            // Update the icon
+            const isDark = document.body.classList.contains('dark-mode');
+            
+            if (isDark) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    </script>
 </body>
 </html> 
