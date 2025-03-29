@@ -1,0 +1,17 @@
+title: Devin Ambron
+description: Personal website for Devin Ambron
+baseurl: ""
+url: ""
+github_username: devinambron
+
+# Build settings
+markdown: kramdown
+theme: jekyll-theme-minimal
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Exclude from processing
+exclude:
+  - .gitignore
+  - README.md 
