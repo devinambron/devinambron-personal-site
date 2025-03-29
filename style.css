@@ -280,6 +280,11 @@ header {
     gap: 12px;
 }
 
+/* Logo area needs a bit more margin */
+.logo {
+    margin-left: 4px;
+}
+
 /* Theme toggle styles */
 .theme-toggle {
     width: 40px;
@@ -326,22 +331,33 @@ header {
         rgba(255, 255, 255, 0.1) 0px 0px 20px -5px;
 }
 
+/* Header logo image styles */
+.header-logo-image {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    display: block;
+    transition: var(--transition);
+}
+
 .logo a {
     font-weight: 700;
-    font-size: 20px;
     color: var(--primary);
     text-decoration: none;
     letter-spacing: -0.03em;
     position: relative;
     z-index: 1;
-    padding: 8px 16px;
-    border-radius: var(--radius-sm);
+    padding: 0;
+    border-radius: 0;
     transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-    background-color: var(--glass-bg);
-    backdrop-filter: blur(var(--glass-blur));
-    -webkit-backdrop-filter: blur(var(--glass-blur));
-    border: 1px solid var(--glass-border);
-    box-shadow: var(--glass-shadow);
+    background-color: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: none;
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .logo a::after {
@@ -349,12 +365,14 @@ header {
 }
 
 .logo a:hover {
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: transparent;
     text-decoration: none;
-    transform: translateY(-2px) scale(1.03);
-    box-shadow: 
-        rgba(255, 255, 255, 0.6) 0px 0px 0px 1px inset,
-        rgba(0, 0, 0, 0.1) 0px 15px 20px -5px;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: none;
+}
+
+.logo a:hover .header-logo-image {
+    transform: scale(1.1);
 }
 
 .main-nav {
@@ -1401,9 +1419,14 @@ footer p {
         top: 10px;
     }
     
+    .header-logo-image {
+        width: 32px;
+        height: 32px;
+    }
+    
     .logo a {
         font-size: 18px;
-        padding: 6px 12px;
+        padding: 0;
     }
     
     .nav-link {
@@ -1530,4 +1553,10 @@ html.dark-mode .about-content a {
     font-weight: 600;
     text-decoration-thickness: 1.5px;
     text-shadow: 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Dark mode styling for header logo */
+.dark-mode .header-logo-image,
+html.dark-mode .header-logo-image {
+    filter: brightness(1.2) contrast(1.1);
 } 
