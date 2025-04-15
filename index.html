@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devin Ambron | Personal Website</title>
+    <meta name="description" content="Personal website for Devin Ambron, entrepreneur, marketer, and community builder based in Austin, TX.">
+    <!-- Prevent page flash by adding early theme detection -->
+    <script>
+        // Early theme detection to prevent flash
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                document.documentElement.classList.add('dark-mode');
+            }
+        })();
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="images/D.png" alt="Devin Ambron" class="header-logo-image">
+            </a>
+        </div>
+        <div class="header-right">
+            <div class="theme-toggle" title="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link nav-link-active">Home</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="profile-section">
+            <div class="container">
+                <div class="profile-content">
+                    <div class="profile-left">
+                        <div class="profile-image">
+                            <img src="images/profile.jpeg" alt="Devin Ambron" class="logo-image">
+                        </div>
+                    </div>
+                    <div class="profile-right">
+                        <h1 class="animate-text">Hi, I'm <span class="highlight">Devin</span></h1>
+                        <ul class="social-media-links profile-social">
+                            <li><a href="https://www.linkedin.com/in/dambron?fromQR=1" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+                            <li><a href="https://instagram.com/dambron" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="https://www.youtube.com/channel/UChEZx4YckVd6osV0lJgaGnQ" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a></li>
+                            <li><a href="https://twitter.com/dambron" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a></li>
+                        </ul>
+                        <p class="tagline">Entrepreneur • Builder • Community</p>
+                        <div class="about-content">
+                            <p>I live in Austin, TX and have founded <a href="https://ambronenterprises.com" target="_blank" rel="noopener">various companies</a> with an extensive background in <a href="https://builtwelldigital.com" target="_blank" rel="noopener">marketing</a>, tech, systems, speaking, movement and community building and run various <a href="https://austinconnectionshh.com" target="_blank" rel="noopener">networking</a> and summit events.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bento-grid">
+                    <div class="bento-box bento-box-large">
+                        <i class="fas fa-briefcase bento-box-icon"></i>
+                        <h3 class="bento-box-title">Entrepreneurship</h3>
+                        <p class="bento-box-content">Founded multiple successful companies focused on digital marketing, community building, and tech solutions.</p>
+                    </div>
+                    
+                    <div class="bento-box bento-box-dark">
+                        <i class="fas fa-bullhorn bento-box-icon"></i>
+                        <h3 class="bento-box-title">Marketing</h3>
+                        <p class="bento-box-content">Expert in digital marketing strategies that drive growth and engagement.</p>
+                    </div>
+                    
+                    <div class="bento-box">
+                        <i class="fas fa-users bento-box-icon"></i>
+                        <h3 class="bento-box-title">Community Building</h3>
+                        <p class="bento-box-content">Created thriving communities and networking opportunities in Austin.</p>
+                    </div>
+                    
+                    <div class="bento-box bento-box-large bento-box-dark">
+                        <i class="fas fa-microphone bento-box-icon"></i>
+                        <h3 class="bento-box-title">Speaking</h3>
+                        <p class="bento-box-content">Regular speaker at industry events, sharing insights on marketing, entrepreneurship, and community development.</p>
+                    </div>
+                    
+                    <div class="bento-box bento-box-dark">
+                        <i class="fas fa-calendar-alt bento-box-icon"></i>
+                        <h3 class="bento-box-title">Events</h3>
+                        <p class="bento-box-content">Organize and run networking events and summits in Austin.</p>
+                        <a href="https://austinconnectionshh.com" target="_blank" rel="noopener" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <script>document.write(new Date().getFullYear())</script> Devin Ambron. All rights reserved.</p>
+            <p>Site by <a href="https://builtwelldigital.com/siteby" target="_blank" rel="noopener">Builtwell</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Text animation for the main heading
+        const text = document.querySelector('.animate-text');
+        text.innerHTML = text.textContent.replace(/\S/g, "<span>$&</span>");
+        
+        const spans = document.querySelectorAll('.animate-text span');
+        spans.forEach((span, idx) => {
+            span.style.animationDelay = `${idx * 0.05}s`;
+        });
+
+        // Theme toggle functionality
+        const themeToggle = document.querySelector('.theme-toggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        // Function to set theme
+        function setTheme(isDark) {
+            if (isDark) {
+                document.documentElement.classList.add('dark-mode');
+                document.body.classList.add('dark-mode');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.classList.remove('dark-mode');
+                document.body.classList.remove('dark-mode');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+        
+        // Check for system preference
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        // Check for saved theme preference or use system preference
+        const savedTheme = localStorage.getItem('theme');
+        
+        if (savedTheme === 'dark') {
+            setTheme(true);
+        } else if (savedTheme === 'light') {
+            setTheme(false);
+        } else {
+            // If no saved preference, use system preference
+            setTheme(prefersDarkScheme.matches);
+        }
+        
+        // Toggle theme when the button is clicked
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.body.classList.contains('dark-mode');
+            setTheme(!isDark);
+        });
+        
+        // Listen for system preference changes
+        prefersDarkScheme.addEventListener('change', (e) => {
+            // Only apply if user hasn't set a preference
+            if (!localStorage.getItem('theme')) {
+                setTheme(e.matches);
+            }
+        });
+    </script>
+</body>
+</html> 
