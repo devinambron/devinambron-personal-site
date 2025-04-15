@@ -1,106 +1,126 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark-mode">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Devin Ambron | Personal Website</title>
     <meta name="description" content="Personal website for Devin Ambron, entrepreneur, marketer, and community builder based in Austin, TX.">
-    <!-- Prevent page flash by adding early theme detection -->
-    <script>
-        // Early theme detection to prevent flash
-        (function() {
-            const savedTheme = localStorage.getItem('theme');
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            
-            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-                document.documentElement.classList.add('dark-mode');
-            }
-        })();
-    </script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <a href="index.html">
-                <img src="images/D.png" alt="Devin Ambron" class="header-logo-image">
-            </a>
+    <!-- WebGL Background Canvas -->
+    <canvas id="webgl-background" class="webgl-canvas"></canvas>
+    
+    <div class="phone-mockup-wrapper">
+        <div class="phone-mockup">
+            <!-- iMessage Header -->
+            <div class="imessage-header">
+                <div class="profile-info">
+                    <img src="images/D.png" alt="Devin">
+                    <span>Devin Ambron</span>
+                </div>
+                <div class="header-icon">
+                    <i class="fas fa-info-circle"></i>
         </div>
-        <div class="header-right">
-            <div class="theme-toggle" title="Toggle theme">
-                <i class="fas fa-moon"></i>
             </div>
-            <nav class="main-nav">
-                <a href="index.html" class="nav-link nav-link-active">Home</a>
-                <a href="blog.html" class="nav-link">Blog</a>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <section class="profile-section">
-            <div class="container">
-                <div class="profile-content">
-                    <div class="profile-left">
-                        <div class="profile-image">
-                            <img src="images/profile.jpeg" alt="Devin Ambron" class="logo-image">
+            
+            <!-- Phone content -->
+            <div class="phone-content">
+                <!-- Message thread -->
+                <div class="message-thread">
+                    <!-- Date divider -->
+                    <div class="message-date-divider">Today</div>
+                    
+                    <!-- Welcome message with wave emoji -->
+                    <div class="message-bubble message-received">
+                        <div class="message-content">
+                            <p>👋 Hi, I'm Devin</p>
                         </div>
                     </div>
-                    <div class="profile-right">
-                        <h1 class="animate-text">Hi, I'm <span class="highlight">Devin</span></h1>
-                        <ul class="social-media-links profile-social">
-                            <li><a href="https://www.linkedin.com/in/dambron?fromQR=1" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
-                            <li><a href="https://instagram.com/dambron" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
-                            <li><a href="https://www.youtube.com/channel/UChEZx4YckVd6osV0lJgaGnQ" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a></li>
-                            <li><a href="https://twitter.com/dambron" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a></li>
-                        </ul>
-                        <p class="tagline">Entrepreneur • Builder • Community</p>
-                        <div class="about-content">
+                    
+                    <!-- About message -->
+                    <div class="message-bubble message-received">
+                        <div class="message-content">
                             <p>I live in Austin, TX and have founded <a href="https://ambronenterprises.com" target="_blank" rel="noopener">various companies</a> with an extensive background in <a href="https://builtwelldigital.com" target="_blank" rel="noopener">marketing</a>, tech, systems, speaking, movement and community building and run various <a href="https://austinconnectionshh.com" target="_blank" rel="noopener">networking</a> and summit events.</p>
-                            <a href="blog.html" class="btn btn-primary">Read My Blog <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <!-- User response -->
+                    <div class="message-bubble message-sent">
+                        <div class="message-content">
+                            <p>Tell me more about what you do professionally 👨‍💻</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Message with Entrepreneurship -->
+                    <div class="message-bubble message-received">
+                        <div class="message-content">
+                            <p><strong>Entrepreneurship</strong></p>
+                            <p>Founded multiple successful companies focused on digital marketing, community building, and tech solutions.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Message with Marketing -->
+                    <div class="message-bubble message-received">
+                        <div class="message-content">
+                            <p><strong>Marketing</strong></p>
+                            <p>Expert in digital marketing strategies that drive growth and engagement.</p>
+                    </div>
+                </div>
+                
+                    <!-- Message with Community Building -->
+                    <div class="message-bubble message-received">
+                        <div class="message-content">
+                            <p><strong>Community Building</strong></p>
+                            <p>Created thriving communities and networking opportunities in Austin.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- User follow-up question -->
+                    <div class="message-bubble message-sent">
+                        <div class="message-content">
+                            <p>Sounds interesting! What else do you do? 🤔</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Message with Speaking -->
+                    <div class="message-bubble message-received">
+                        <div class="message-content">
+                            <p><strong>Speaking</strong></p>
+                            <p>Regular speaker at industry events, sharing insights on marketing, entrepreneurship, and community development.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Message with Events -->
+                    <div class="message-bubble message-received">
+                        <div class="message-content">
+                            <p><strong>Events</strong></p>
+                            <p>Organize and run networking events and summits in Austin.</p>
+                            <p><a href="https://austinconnectionshh.com" target="_blank" rel="noopener">Learn More</a></p>
+                        </div>
+                    </div>
+                    
+                    <!-- User final response -->
+                    <div class="message-bubble message-sent">
+                        <div class="message-content">
+                            <p>Thanks for sharing! I'd love to connect 👍</p>
                         </div>
                     </div>
                 </div>
                 
-                <div class="bento-grid">
-                    <div class="bento-box bento-box-large">
-                        <i class="fas fa-briefcase bento-box-icon"></i>
-                        <h3 class="bento-box-title">Entrepreneurship</h3>
-                        <p class="bento-box-content">Founded multiple successful companies focused on digital marketing, community building, and tech solutions.</p>
-                    </div>
-                    
-                    <div class="bento-box bento-box-dark">
-                        <i class="fas fa-bullhorn bento-box-icon"></i>
-                        <h3 class="bento-box-title">Marketing</h3>
-                        <p class="bento-box-content">Expert in digital marketing strategies that drive growth and engagement.</p>
-                    </div>
-                    
-                    <div class="bento-box">
-                        <i class="fas fa-users bento-box-icon"></i>
-                        <h3 class="bento-box-title">Community Building</h3>
-                        <p class="bento-box-content">Created thriving communities and networking opportunities in Austin.</p>
-                    </div>
-                    
-                    <div class="bento-box bento-box-large bento-box-dark">
-                        <i class="fas fa-microphone bento-box-icon"></i>
-                        <h3 class="bento-box-title">Speaking</h3>
-                        <p class="bento-box-content">Regular speaker at industry events, sharing insights on marketing, entrepreneurship, and community development.</p>
-                    </div>
-                    
-                    <div class="bento-box bento-box-dark">
-                        <i class="fas fa-calendar-alt bento-box-icon"></i>
-                        <h3 class="bento-box-title">Events</h3>
-                        <p class="bento-box-content">Organize and run networking events and summits in Austin.</p>
-                        <a href="https://austinconnectionshh.com" target="_blank" rel="noopener" class="btn btn-outline">Learn More</a>
-                    </div>
+                <!-- Message input bar at bottom -->
+                <div class="message-input">
+                    <input type="text" placeholder="Message">
+                    <button class="send-btn"><i class="fas fa-arrow-up"></i></button>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </div>
 
     <footer>
         <div class="container">
@@ -109,65 +129,479 @@
         </div>
     </footer>
 
+    <!-- Add interactive background script -->
     <script>
-        // Text animation for the main heading
-        const text = document.querySelector('.animate-text');
-        text.innerHTML = text.textContent.replace(/\S/g, "<span>$&</span>");
+    // Create WebGL background with WebGL API
+    (function() {
+        const canvas = document.getElementById('webgl-background');
         
-        const spans = document.querySelectorAll('.animate-text span');
-        spans.forEach((span, idx) => {
-            span.style.animationDelay = `${idx * 0.05}s`;
+        // Set canvas size to match viewport exactly
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        const gl = canvas.getContext('webgl', { alpha: false, antialias: true });
+        
+        // Check if WebGL is available
+        if (!gl) {
+            console.error('WebGL not supported - falling back to Canvas 2D');
+            const ctx = canvas.getContext('2d');
+            setupCanvas2D(canvas, ctx);
+            return;
+        }
+        
+        // Set canvas size
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            gl.viewport(0, 0, canvas.width, canvas.height);
+        }
+        
+        window.addEventListener('resize', resizeCanvas);
+        
+        // Mouse tracking
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let lastMouseX = mouseX;
+        let lastMouseY = mouseY;
+        let isMouseMoving = false;
+        let mouseTimeout;
+        
+        // Mouse movement detection
+        document.addEventListener('mousemove', function(e) {
+            lastMouseX = mouseX;
+            lastMouseY = mouseY;
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            // Detect if mouse is actually moving
+            if (Math.abs(lastMouseX - mouseX) > 3 || Math.abs(lastMouseY - mouseY) > 3) {
+                isMouseMoving = true;
+                
+                // Reset timeout
+                clearTimeout(mouseTimeout);
+                mouseTimeout = setTimeout(() => {
+                    isMouseMoving = false;
+                }, 500);
+            }
         });
-
-        // Theme toggle functionality
-        const themeToggle = document.querySelector('.theme-toggle');
-        const themeIcon = themeToggle.querySelector('i');
         
-        // Function to set theme
-        function setTheme(isDark) {
-            if (isDark) {
-                document.documentElement.classList.add('dark-mode');
-                document.body.classList.add('dark-mode');
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
-                localStorage.setItem('theme', 'dark');
+        // Touch movement for mobile
+        document.addEventListener('touchmove', function(e) {
+            if (e.touches.length > 0) {
+                e.preventDefault(); // Prevent scrolling
+                lastMouseX = mouseX;
+                lastMouseY = mouseY;
+                mouseX = e.touches[0].clientX;
+                mouseY = e.touches[0].clientY;
+                
+                isMouseMoving = true;
+                
+                // Reset timeout
+                clearTimeout(mouseTimeout);
+                mouseTimeout = setTimeout(() => {
+                    isMouseMoving = false;
+                }, 500);
+            }
+        }, { passive: false });
+        
+        // WebGL setup
+        // Create vertex shader for particles
+        const vertexShaderSource = `
+            attribute vec2 position;
+            attribute float size;
+            attribute vec3 color;
+            
+            uniform vec2 resolution;
+            uniform float time;
+            
+            varying vec3 vColor;
+            
+            void main() {
+                vColor = color;
+                
+                // Normalize coordinates
+                vec2 normalizedPosition = position / resolution * 2.0 - 1.0;
+                normalizedPosition.y = -normalizedPosition.y; // Flip Y for WebGL coordinate system
+                
+                gl_Position = vec4(normalizedPosition, 0.0, 1.0);
+                gl_PointSize = size;
+            }
+        `;
+        
+        // Create fragment shader for particles
+        const fragmentShaderSource = `
+            precision mediump float;
+            varying vec3 vColor;
+            
+            void main() {
+                // Create circular particles
+                float distance = length(gl_PointCoord - vec2(0.5));
+                if (distance > 0.5) discard;
+                
+                // Smooth edge
+                float smoothedAlpha = 1.0 - smoothstep(0.4, 0.5, distance);
+                gl_FragColor = vec4(vColor, smoothedAlpha);
+            }
+        `;
+        
+        // Compile shader
+        function createShader(gl, type, source) {
+            const shader = gl.createShader(type);
+            gl.shaderSource(shader, source);
+            gl.compileShader(shader);
+            
+            if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+                console.error('Shader compile error:', gl.getShaderInfoLog(shader));
+                gl.deleteShader(shader);
+                return null;
+            }
+            
+            return shader;
+        }
+        
+        // Create program
+        function createProgram(gl, vertexShader, fragmentShader) {
+            const program = gl.createProgram();
+            gl.attachShader(program, vertexShader);
+            gl.attachShader(program, fragmentShader);
+            gl.linkProgram(program);
+            
+            if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+                console.error('Program link error:', gl.getProgramInfoLog(program));
+                return null;
+            }
+            
+            return program;
+        }
+        
+        // Compile shaders and create program
+        const vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
+        const fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource);
+        const program = createProgram(gl, vertexShader, fragmentShader);
+        
+        if (!program) {
+            console.error('Failed to create shader program');
+            return;
+        }
+        
+        // Particle system configuration
+        const particleCount = 150; // Increasing particle count for better effect
+        
+        // Create and bind buffers
+        const positions = new Float32Array(particleCount * 2);
+        const sizes = new Float32Array(particleCount);
+        const colors = new Float32Array(particleCount * 3);
+        
+        // Create random particles
+        for (let i = 0; i < particleCount; i++) {
+            positions[i * 2] = Math.random() * canvas.width;
+            positions[i * 2 + 1] = Math.random() * canvas.height;
+            sizes[i] = Math.random() * 6 + 3; // Slightly larger particles
+            
+            // Red color theme with more variation
+            const colorRand = Math.random();
+            if (colorRand < 0.6) {
+                // Various reds with more intensity
+                colors[i * 3] = 0.9 + Math.random() * 0.1; // R (high)
+                colors[i * 3 + 1] = 0.1 + Math.random() * 0.1; // G (low)
+                colors[i * 3 + 2] = 0.1 + Math.random() * 0.1; // B (low)
             } else {
-                document.documentElement.classList.remove('dark-mode');
-                document.body.classList.remove('dark-mode');
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
-                localStorage.setItem('theme', 'light');
+                // Dark grays for contrast
+                const gray = 0.1 + Math.random() * 0.15;
+                colors[i * 3] = gray;
+                colors[i * 3 + 1] = gray;
+                colors[i * 3 + 2] = gray;
             }
         }
         
-        // Check for system preference
-        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        // Create position buffer
+        const positionBuffer = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, positions, gl.DYNAMIC_DRAW);
         
-        // Check for saved theme preference or use system preference
-        const savedTheme = localStorage.getItem('theme');
+        // Create size buffer
+        const sizeBuffer = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, sizeBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, sizes, gl.STATIC_DRAW);
         
-        if (savedTheme === 'dark') {
-            setTheme(true);
-        } else if (savedTheme === 'light') {
-            setTheme(false);
-        } else {
-            // If no saved preference, use system preference
-            setTheme(prefersDarkScheme.matches);
+        // Create color buffer
+        const colorBuffer = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, colors, gl.STATIC_DRAW);
+        
+        // Get attribute locations
+        const positionAttributeLocation = gl.getAttribLocation(program, "position");
+        const sizeAttributeLocation = gl.getAttribLocation(program, "size");
+        const colorAttributeLocation = gl.getAttribLocation(program, "color");
+        
+        // Get uniform locations
+        const resolutionUniformLocation = gl.getUniformLocation(program, "resolution");
+        const timeUniformLocation = gl.getUniformLocation(program, "time");
+        
+        // Particle velocities
+        const velocities = new Float32Array(particleCount * 2);
+        for (let i = 0; i < particleCount; i++) {
+            velocities[i * 2] = (Math.random() - 0.5) * 1.0;  // X velocity
+            velocities[i * 2 + 1] = (Math.random() - 0.5) * 1.0; // Y velocity
         }
         
-        // Toggle theme when the button is clicked
-        themeToggle.addEventListener('click', () => {
-            const isDark = document.body.classList.contains('dark-mode');
-            setTheme(!isDark);
-        });
-        
-        // Listen for system preference changes
-        prefersDarkScheme.addEventListener('change', (e) => {
-            // Only apply if user hasn't set a preference
-            if (!localStorage.getItem('theme')) {
-                setTheme(e.matches);
+        // Animation loop
+        let startTime = Date.now();
+        function render() {
+            const currentTime = (Date.now() - startTime) / 1000;
+            
+            // Clear canvas
+            gl.clearColor(0.04, 0.04, 0.06, 1.0);
+            gl.clear(gl.COLOR_BUFFER_BIT);
+            
+            // Use program
+            gl.useProgram(program);
+            
+            // Update position based on velocity
+            for (let i = 0; i < particleCount; i++) {
+                positions[i * 2] += velocities[i * 2];
+                positions[i * 2 + 1] += velocities[i * 2 + 1];
+                
+                // Bounce off edges
+                if (positions[i * 2] < 0 || positions[i * 2] > canvas.width) {
+                    velocities[i * 2] *= -1;
+                }
+                if (positions[i * 2 + 1] < 0 || positions[i * 2 + 1] > canvas.height) {
+                    velocities[i * 2 + 1] *= -1;
+                }
+                
+                // Mouse influence
+                if (isMouseMoving) {
+                    const dx = positions[i * 2] - mouseX;
+                    const dy = positions[i * 2 + 1] - mouseY;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 150) {
+                        const angle = Math.atan2(dy, dx);
+                        const force = (150 - distance) / 150 * 0.7; // Stronger force
+                        
+                        velocities[i * 2] += Math.cos(angle) * force;
+                        velocities[i * 2 + 1] += Math.sin(angle) * force;
+                    }
+                }
             }
+            
+            // Update position buffer
+            gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+            gl.bufferData(gl.ARRAY_BUFFER, positions, gl.DYNAMIC_DRAW);
+            
+            // Set attributes
+            gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+            gl.vertexAttribPointer(positionAttributeLocation, 2, gl.FLOAT, false, 0, 0);
+            gl.enableVertexAttribArray(positionAttributeLocation);
+            
+            gl.bindBuffer(gl.ARRAY_BUFFER, sizeBuffer);
+            gl.vertexAttribPointer(sizeAttributeLocation, 1, gl.FLOAT, false, 0, 0);
+            gl.enableVertexAttribArray(sizeAttributeLocation);
+            
+            gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
+            gl.vertexAttribPointer(colorAttributeLocation, 3, gl.FLOAT, false, 0, 0);
+            gl.enableVertexAttribArray(colorAttributeLocation);
+            
+            // Set uniforms
+            gl.uniform2f(resolutionUniformLocation, canvas.width, canvas.height);
+            gl.uniform1f(timeUniformLocation, currentTime);
+            
+            // Enable blending for transparency
+            gl.enable(gl.BLEND);
+            gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+            
+            // Draw points
+            gl.drawArrays(gl.POINTS, 0, particleCount);
+            
+            requestAnimationFrame(render);
+        }
+        
+        // Start animation
+        render();
+        
+        // Fallback function in case WebGL is not supported
+        function setupCanvas2D(canvas, ctx) {
+            // Set canvas size
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+            
+            // Particle system
+            const particles = [];
+            const particleCount = 80;
+            const maxRadius = 2;
+            const redColor = '#c73a30';
+            const darkRedColor = '#9a2921';
+            const darkGrayColor = '#333333';
+            
+            // Create particles
+            function createParticles() {
+                for (let i = 0; i < particleCount; i++) {
+                    const colorRand = Math.random();
+                    let color;
+                    
+                    if (colorRand < 0.5) {
+                        color = redColor;
+                    } else if (colorRand < 0.8) {
+                        color = darkRedColor;
+                    } else {
+                        color = darkGrayColor;
+                    }
+                    
+                    particles.push({
+                        x: Math.random() * canvas.width,
+                        y: Math.random() * canvas.height,
+                        radius: Math.random() * maxRadius + 1,
+                        color: color,
+                        speed: Math.random() * 0.5 + 0.2,
+                        directionX: Math.random() * 2 - 1,
+                        directionY: Math.random() * 2 - 1,
+                        opacity: Math.random() * 0.5 + 0.2
+                    });
+                }
+            }
+            
+            // Draw particles
+            function drawParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                // Draw gradient background
+                const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+                gradient.addColorStop(0, 'rgba(10, 10, 12, 1)');
+                gradient.addColorStop(1, 'rgba(15, 15, 20, 1)');
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                // Add glow effect around cursor when moving
+                if (isMouseMoving) {
+                    const glow = ctx.createRadialGradient(
+                        mouseX, mouseY, 0,
+                        mouseX, mouseY, 150
+                    );
+                    glow.addColorStop(0, 'rgba(199, 58, 48, 0.15)');
+                    glow.addColorStop(1, 'rgba(199, 58, 48, 0)');
+                    ctx.fillStyle = glow;
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                }
+                
+                // Draw particles
+                particles.forEach(particle => {
+                    ctx.beginPath();
+                    ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = particle.color;
+                    ctx.globalAlpha = particle.opacity;
+                    ctx.fill();
+                    ctx.closePath();
+                    
+                    // Move particles
+                    particle.x += particle.directionX * particle.speed;
+                    particle.y += particle.directionY * particle.speed;
+                    
+                    // Influence particles near mouse
+                    if (isMouseMoving) {
+                        const dx = particle.x - mouseX;
+                        const dy = particle.y - mouseY;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        
+                        if (distance < 150) {
+                            const angle = Math.atan2(dy, dx);
+                            const force = (150 - distance) / 150;
+                            
+                            particle.directionX += Math.cos(angle) * force * 0.05;
+                            particle.directionY += Math.sin(angle) * force * 0.05;
+                            
+                            // Limit direction vectors
+                            const directionMagnitude = Math.sqrt(
+                                particle.directionX * particle.directionX + 
+                                particle.directionY * particle.directionY
+                            );
+                            
+                            if (directionMagnitude > 3) {
+                                particle.directionX = (particle.directionX / directionMagnitude) * 3;
+                                particle.directionY = (particle.directionY / directionMagnitude) * 3;
+                            }
+                        }
+                    }
+                    
+                    // Boundary check - wrap around edges
+                    if (particle.x < 0) particle.x = canvas.width;
+                    if (particle.x > canvas.width) particle.x = 0;
+                    if (particle.y < 0) particle.y = canvas.height;
+                    if (particle.y > canvas.height) particle.y = 0;
+                });
+                
+                // Connect nearby particles with lines
+                ctx.globalAlpha = 0.2;
+                ctx.strokeStyle = '#c73a30';
+                ctx.lineWidth = 0.5;
+                
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        
+                        if (distance < 100) {
+                            ctx.globalAlpha = 0.2 - (distance / 100) * 0.2;
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+                
+                ctx.globalAlpha = 1;
+                requestAnimationFrame(drawParticles);
+            }
+            
+            // Initialize
+            createParticles();
+            drawParticles();
+        }
+        
+        // Apply animations to message bubbles
+        const messageBubbles = document.querySelectorAll('.message-bubble');
+        messageBubbles.forEach((bubble, index) => {
+            // Apply staggered entrance animation
+            gsap.fromTo(bubble, 
+                { 
+                    opacity: 0, 
+                    y: 20, 
+                    scale: 0.95 
+                },
+                { 
+                    opacity: 1, 
+                    y: 0, 
+                    scale: 1,
+                    duration: 0.4,
+                    ease: "back.out(1.2)",
+                    delay: index * 0.08
+                }
+            );
+            
+            // Add hover effect
+            bubble.addEventListener('mouseenter', () => {
+                gsap.to(bubble, { 
+                    scale: 1.03, 
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            });
+            
+            bubble.addEventListener('mouseleave', () => {
+                gsap.to(bubble, { 
+                    scale: 1, 
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            });
         });
+    })();
     </script>
 </body>
 </html> 
