@@ -12,8 +12,14 @@
             const savedTheme = localStorage.getItem('theme');
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
             
+            // Apply dark mode if user has explicitly chosen it OR if no preference is saved and system prefers dark
             if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
                 document.documentElement.classList.add('dark-mode');
+                document.body.classList.add('dark-mode');
+            } else {
+                // Ensure light mode is applied
+                document.documentElement.classList.remove('dark-mode');
+                document.body.classList.remove('dark-mode');
             }
         })();
     </script>
@@ -144,6 +150,7 @@
         // Check for saved theme preference or use system preference
         const savedTheme = localStorage.getItem('theme');
         
+        // Always check and apply the correct theme, regardless of what the early script did
         if (savedTheme === 'dark') {
             setTheme(true);
         } else if (savedTheme === 'light') {
@@ -164,6 +171,21 @@
             // Only apply if user hasn't set a preference
             if (!localStorage.getItem('theme')) {
                 setTheme(e.matches);
+            }
+        });
+        
+        // Also listen for storage changes (in case user changes theme in another tab)
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'theme') {
+                const newTheme = e.newValue;
+                if (newTheme === 'dark') {
+                    setTheme(true);
+                } else if (newTheme === 'light') {
+                    setTheme(false);
+                } else {
+                    // If theme is cleared, fall back to system preference
+                    setTheme(prefersDarkScheme.matches);
+                }
             }
         });
     </script>
